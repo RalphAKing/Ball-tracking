@@ -20,17 +20,22 @@ while True:
     # cv2.line(frame, (left_border, 0), (left_border, frame.shape[0]), (0, 255, 0), 2) 
     # cv2.line(frame, (right_border, 0), (right_border, frame.shape[0]), (0, 255, 0), 2)  
     
-    for result in results:
-        for box in result.boxes:
-            x, y, width, height = box.xywh[0].tolist()  
+    for result in results: 
+        avrage=0
+        for box in result.boxes: 
+            x, y, width, height = box.xywh[0].tolist() 
             x_center = x 
+            avrage = avrage + 1 if x_center > right_border else avrage - 1 if x_center < left_border else avrage - 1 if avrage > 0 else avrage + 1 if avrage < 0 else avrage
             
-            if x_center < left_border:
-                print("left")
-            elif x_center > right_border:
-                print("right")
-            else:
-                print("center")
+        position = "center" 
+        if avrage > 0:
+            position = "right"  
+        elif avrage < 0:
+            position="left"
+        else:
+            position="center"
+        cv2.putText(frame, f"Position: {position}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+
 
 
     annotated_frame = results[0].plot()

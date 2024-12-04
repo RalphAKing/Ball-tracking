@@ -28,8 +28,8 @@ while True:
             position = "center" 
             position = "right" if avrage > 0 else "left" if avrage < 0 else "center"
             cv2.putText(frame_resized, f"Position: {position}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-            annotated_frame = results[0].plot()
-            cv2.imshow('YOLO Live Inference', annotated_frame) 
+        annotated_frame = results[0].plot()
+        cv2.imshow('YOLO Live Inference', annotated_frame) 
         if cv2.waitKey(1) & 0xFF == ord('q'): 
             break 
 cap.release() 
