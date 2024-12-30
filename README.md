@@ -1,23 +1,70 @@
-# Ball-tracking
+# Ball-Tracking
 
-Track rugby balls with the ultralytics libraiy using yolo with my model best.pt and ruby.pt, there are 4 python files.
+A Python-based project for tracking rugby balls using the Ultralytics YOLO model. This project includes four scripts designed for live ball tracking, video processing, and image extraction. The system leverages trained YOLO models (`best.pt` and `rugby.pt`) for accurate detection and tracking.
 
-main.py
-- live video transcoding with the direction of play being written in corner
-reducedframes.py
-- reduced frames ball tracking where drawing a box arround the play and show direction of play
-toimage.py
-- conversts a video to images
-vid.py
-- ball tracking where drawing a box arround the play and show direction of play
+## Features
+- **Live Video Tracking**: Real-time ball detection with play direction overlay.
+- **Reduced Frame Tracking**: Optimized for frame sampling to improve performance.
+- **Video to Image Conversion**: Extract frames from a video and save as images.
+- **Video Ball Tracking**: Annotates video frames with ball tracking and play direction.
 
+## Scripts Overview
+
+### `main.py`
+- Tracks the rugby ball in live video streams using `rugby.pt`.
+- Displays the direction of play (`left`, `center`, `right`) on the screen.
+- Features real-time YOLO model inference and annotations.
+
+### `reduceframes.py`
+- Processes a video by sampling frames for efficient ball tracking using `best.pt`.
+- Annotates frames with a bounding box and play direction.
+- Designed for performance optimization by reducing the number of processed frames.
+
+### `toimage.py`
+- Converts video frames into individual images at a specified interval.
+- Saves images to a specified output directory for further analysis.
+
+### `vid.py`
+- Tracks the rugby ball in video files using `rugby.pt`.
+- Annotates the video with play direction (`left`, `center`, `right`) and bounding boxes.
+- Implements multi-threaded processing for improved performance.
+
+## Usage
+
+### Live Video Tracking
+Run the `main.py` script to track the ball in a live video feed:
+```bash
+python main.py
+```
+
+### Video Frame Sampling and Ball Tracking
+To track the ball with reduced frames:
+```bash
+python reduceframes.py
+```
+
+### Convert Video to Images
+Extract video frames as images:
+```bash
+python toimage.py
+```
+
+### Process Video Files with Ball Tracking
+Run the `vid.py` script for video ball tracking:
+```bash
+python vid.py
+```
+
+## Models
+Ensure the YOLO models (`best.pt` and `rugby.pt`) are trained for rugby ball detection and are accessible in the project directory.
 
 ## License
 
-This project is open-source and available for modification and use under the MIT license.
+This project is licensed under the MIT License.
+
+---
 
 ### MIT License
-
 ```
 MIT License
 
